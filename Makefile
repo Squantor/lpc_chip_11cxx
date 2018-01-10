@@ -86,8 +86,8 @@ all: $(BIN_PATH)/$(BIN_NAME).a
 # create the archive
 $(BIN_PATH)/$(BIN_NAME).a: $(OBJECTS)
 	$(CXX_PREFIX)$(AR) -r $@ $(OBJECTS)
-	$(CXX_PREFIX)$(SIZE) $(BIN_PATH)/$(BIN_NAME).a
-	$(CXX_PREFIX)$(OBJDUMP) -h -S "$(BIN_PATH)/$(BIN_NAME).a" > "$(BIN_PATH)/$(BIN_NAME).lss"
+	$(CXX_PREFIX)$(SIZE) $@
+	$(CXX_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(BIN_NAME).lss"
 
 # Add dependency files, if they exist
 -include $(DEPS)
