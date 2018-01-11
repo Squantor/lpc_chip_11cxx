@@ -3,7 +3,7 @@ BIN_NAME = liblpc_chip_11cxx
 SOURCES = src/adc_11xx.c src/adc_1125.c src/chip_11xx.c src/clock_11xx.c src/gpio_11xx_1.c src/gpio_11xx_2.c \
 src/gpiogroup_11xx.c src/i2c_11xx.c src/iocon_11xx.c src/pinint_11xx.c src/pmu_11xx.c src/ring_buffer.c \
 src/ssp_11xx.c src/sysctl_11xx.c src/sysinit_11xx.c src/timer_11xx.c src/uart_11xx.c src/wwdt_11xx.c
-INCLUDES = -Iinc
+INCLUDES = -Iinc -I"../squantlibraries/sqlibc/inc"
 
 # Toolchain settings
 MAKE = make
