@@ -72,7 +72,7 @@ int RingBuffer_Insert(RINGBUFF_T *RingBuff, const void *data)
 		return 0;
 
 	ptr += RB_INDH(RingBuff) * RingBuff->itemSz;
-	sqmemcpy(ptr, data, RingBuff->itemSz);
+	memcpy(ptr, data, RingBuff->itemSz);
 	RingBuff->head++;
 
 	return 1;
@@ -102,13 +102,13 @@ int RingBuffer_InsertMult(RINGBUFF_T *RingBuff, const void *data, int num)
 
 	/* Write segment 1 */
 	ptr += RB_INDH(RingBuff) * RingBuff->itemSz;
-	sqmemcpy(ptr, data, cnt1 * RingBuff->itemSz);
+	memcpy(ptr, data, cnt1 * RingBuff->itemSz);
 	RingBuff->head += cnt1;
 
 	/* Write segment 2 */
 	ptr = (uint8_t *) RingBuff->data + RB_INDH(RingBuff) * RingBuff->itemSz;
 	data = (const uint8_t *) data + cnt1 * RingBuff->itemSz;
-	sqmemcpy(ptr, data, cnt2 * RingBuff->itemSz);
+	memcpy(ptr, data, cnt2 * RingBuff->itemSz);
 	RingBuff->head += cnt2;
 
 	return cnt1 + cnt2;
@@ -124,7 +124,7 @@ int RingBuffer_Pop(RINGBUFF_T *RingBuff, void *data)
 		return 0;
 
 	ptr += RB_INDT(RingBuff) * RingBuff->itemSz;
-	sqmemcpy(data, ptr, RingBuff->itemSz);
+	memcpy(data, ptr, RingBuff->itemSz);
 	RingBuff->tail++;
 
 	return 1;
@@ -154,13 +154,13 @@ int RingBuffer_PopMult(RINGBUFF_T *RingBuff, void *data, int num)
 
 	/* Write segment 1 */
 	ptr += RB_INDT(RingBuff) * RingBuff->itemSz;
-	sqmemcpy(data, ptr, cnt1 * RingBuff->itemSz);
+	memcpy(data, ptr, cnt1 * RingBuff->itemSz);
 	RingBuff->tail += cnt1;
 
 	/* Write segment 2 */
 	ptr = (uint8_t *) RingBuff->data + RB_INDT(RingBuff) * RingBuff->itemSz;
 	data = (uint8_t *) data + cnt1 * RingBuff->itemSz;
-	sqmemcpy(data, ptr, cnt2 * RingBuff->itemSz);
+	memcpy(data, ptr, cnt2 * RingBuff->itemSz);
 	RingBuff->tail += cnt2;
 
 	return cnt1 + cnt2;
