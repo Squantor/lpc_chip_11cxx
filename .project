@@ -3,7 +3,7 @@
 	<name>lpc_chip_11cxx_lib</name>
 	<comment></comment>
 	<projects>
-		<project>sqlibc</project>
+		<project>sqlibembedded</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
