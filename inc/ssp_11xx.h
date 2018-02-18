@@ -372,7 +372,7 @@ STATIC INLINE uint16_t Chip_SSP_ReceiveFrame(LPC_SSP_T *pSSP)
  * @param	tx_data	: SSP 16-bit data to be transmited
  * @return	 Nothing
  */
-STATIC INLINE void Chip_SSP_SendFrame(LPC_SSP_T *pSSP, uint16_t tx_data)
+STATIC INLINE void Chip_SSP_SendFrame(LPC_SSP_T *pSSP,const uint16_t tx_data)
 {
 	pSSP->DR = SSP_DR_BITMASK(tx_data);
 }
@@ -515,7 +515,7 @@ uint32_t Chip_SSP_RWFrames_Blocking(LPC_SSP_T *pSSP, Chip_SSP_DATA_SETUP_T *xf_s
  * This function can be used in both master and slave mode. First, a writing operation will send
  * the needed data. After that, a dummy reading operation is generated to clear data buffer
  */
-uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP, uint8_t *buffer, uint32_t buffer_len);
+uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP, const uint8_t *buffer, uint32_t buffer_len);
 
 /**
  * @brief   SSP Polling Read in blocking mode

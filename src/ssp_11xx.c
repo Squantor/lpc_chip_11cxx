@@ -230,7 +230,7 @@ uint32_t Chip_SSP_RWFrames_Blocking(LPC_SSP_T *pSSP, Chip_SSP_DATA_SETUP_T *xf_s
 }
 
 /* SSP Polling Write in blocking mode */
-uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP, uint8_t *buffer, uint32_t buffer_len)
+uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP,const uint8_t *buffer, uint32_t buffer_len)
 {
 	uint32_t tx_cnt = 0, rx_cnt = 0;
 
@@ -243,7 +243,7 @@ uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP, uint8_t *buffer, uint32_
 	Chip_SSP_ClearIntPending(pSSP, SSP_INT_CLEAR_BITMASK);
 
 	if (Chip_SSP_GetDataSize(pSSP) > SSP_BITS_8) {
-		uint16_t *wdata16;
+		const uint16_t *wdata16;
 
 		wdata16 = (uint16_t *) buffer;
 
@@ -268,7 +268,7 @@ uint32_t Chip_SSP_WriteFrames_Blocking(LPC_SSP_T *pSSP, uint8_t *buffer, uint32_
 		}
 	}
 	else {
-		uint8_t *wdata8;
+		const uint8_t *wdata8;
 
 		wdata8 = buffer;
 
